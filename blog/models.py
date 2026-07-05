@@ -4,4 +4,5 @@ from django.db import models
 
 class post(models.Model):
     title = models.CharField(length= 250)
+    title = models.CharField(max_length = 255)
     content = models.TextField()
