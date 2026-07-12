@@ -12,15 +12,14 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Post',
+            name='Contact',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=255)),
-                ('content', models.TextField()),
-                ('counted_view', models.IntegerField(default=0)),
-                ('status', models.BooleanField(default=False)),
-                ('published_date', models.DateTimeField(null=True)),
-                ('created_date', models.DateTimeField(auto_now_add=True)),
+                ('name', models.CharField(max_length=255)),
+                ('email', models.EmailField(max_length=254)),
+                ('subject', models.CharField(max_length=255)),
+                ('message', models.TextField()),
+                ('creared_date', models.DateTimeField(auto_now_add=True)),
                 ('updated_date', models.DateTimeField(auto_now=True)),
             ],
         ),
