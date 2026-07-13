@@ -13,4 +13,10 @@ class Post(models.Model):
     status = models.BooleanField(default= False)
     published_date = models.DateTimeField(null= True)
     created_date = models.DateTimeField(auto_now_add= True)
-    updated_date = models.DateTimeField(auto_now= True)
+    updated_date = models.DateTimeField(auto_now= True) 
+
+    def __str__(self):
+        return '{} - {}'.format(self.title, self.id)
+
+    # SELECT * FROM Post
+    # SELECT * FROM Post WHERE status = 1
