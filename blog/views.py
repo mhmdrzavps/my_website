@@ -14,11 +14,11 @@ def blog_view(request, **kwargs):
 
     try:
         page_number = request.GET.get('page')
-        posts = posts.get_page(page_number)
+        posts = posts.page(page_number)
     except PageNotAnInteger:
-        posts = posts.get_page(1)
+        posts = posts.page(1)
     except InvalidPage:
-        posts = posts.get_page(1)
+        posts = posts.page(1)
 
     
     contex = {'posts': posts}
