@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'multi_captcha_admin',
+    'multi_captcha_admin',  # this must be upper than 'django.contrib.admin'
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,14 +41,15 @@ INSTALLED_APPS = [
     'website.apps.WebsiteConfig',
     'django.contrib.humanize',
     'django_extensions',
-    'django.contrib.sites',
+    'django.contrib.sites', # this must be lower than 'django.contrib.staticfiles'
     'debug_toolbar',
     'django.contrib.sitemaps',
     'django_summernote',
     'taggit',
     'robots',
     'captcha',
-    'blog'
+    'blog',
+    'accounts.apps.AccountsConfig'
 ]
 
 # site framework

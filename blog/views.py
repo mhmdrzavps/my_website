@@ -5,9 +5,13 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage,Invalid
 from blog.models import Post, Comment
 from blog.form import CommentForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 
 
+#@login_required
 def blog_view(request, **kwargs):
     posts = Post.objects.filter(status = True)
     if kwargs.get('cat_name') != None:
@@ -42,10 +46,13 @@ def blog_single(request, pid):
             messages.add_message(request, messages.ERROR, 'your comment did not submit')
     posts = Post.objects.filter(status = True)
     post = get_object_or_404(posts, pk=  pid) 
-    comments = Comment.objects.filter(post=post.id, approved = True)
-    form = CommentForm()
-    contex = {'post': post, 'comments': comments, 'form':form }
-    return render(request, 'blog/blog-single.html', contex)
+    if  post.login_require == True:
+        comments = Comment.objects.filter(post=post.id, approved = True)
+        form = CommentForm()
+        contex = {'post': post, 'comments': comments, 'form':form }
+        return render(request, 'blog/blog-single.html', contex)
+    else:
+        return HttpResponseRedirect(reverse('accounts:login'))
 
 
 
