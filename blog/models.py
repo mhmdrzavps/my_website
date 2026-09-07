@@ -3,12 +3,15 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from taggit.managers import TaggableManager
 
-# Create your models here.
+# Category class
 class Category(models.Model):
+
     name = models.CharField(max_length= 255)
     def __str__(self):
         return self.name
 
+
+# Post class
 class Post(models.Model):
 
     image = models.ImageField(upload_to='blog/', default='blog/default.jpg')
@@ -23,22 +26,23 @@ class Post(models.Model):
     created_date = models.DateTimeField(auto_now_add= True)
     updated_date = models.DateTimeField(auto_now= True) 
     login_require = models.BooleanField(default= False)
+
     class Meta:
         ordering = ['-created_date']
         #verbose_name = 'پست'
         #verbose_name_plural = 'پستها'
-
     def __str__(self):
         return '{} - {}'.format(self.title, self.id)
-
     def snippets(self):
         return self.content[:100]+ '. . .'
-
     def get_absolute_url(self):
         return reverse('blog:single', kwargs={"pid": self.id})
 
-# comment class
+
+
+# Comment class
 class Comment(models.Model):
+
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)      
     subject = models.CharField(max_length=255)  

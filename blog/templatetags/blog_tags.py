@@ -38,3 +38,22 @@ def postcategories():
         cat_dict[name] = Post.objects.filter(category = name).count()
     return {'categories': cat_dict}
 
+
+@register.inclusion_tag('blog/blog-top-categories.html')
+def top_categories(arg=3):
+    categories = Category.objects.all()
+    posts = []
+
+    for category in categories:
+        post = Post.objects.filter(
+            status=True,
+            category=category
+        ).order_by('-created_date').first()
+
+        if post and post not in posts:
+            posts.append(post)
+
+        if len(posts) >= arg:
+            break
+
+    return {'posts': posts}
