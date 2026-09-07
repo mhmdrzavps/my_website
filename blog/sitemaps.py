@@ -4,13 +4,15 @@ from django.urls import reverse
 
 
 class BlogSitemap(Sitemap):
-    
+
     priority = 0.5
-    changefreq = 'weekly'
+    changefreq = "weekly"
+
     def items(self):
-        return Post.objects.filter(status = True)
+        return Post.objects.filter(status=True)
+
     def lastmod(self, obj):
         return obj.published_date
-    def location(self, item):
-        return reverse('blog:single', kwargs={"pid": item.id})
 
+    def location(self, item):
+        return reverse("blog:single", kwargs={"pid": item.id})

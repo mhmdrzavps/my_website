@@ -1,54 +1,59 @@
 from django import template
 from blog.models import Post, Category, Comment
+
 register = template.Library()
 
+
 @register.simple_tag(name="totalpost")
-def function(): 
-    posts = Post.objects.filter(status = True).count()
+def function():
+    posts = Post.objects.filter(status=True).count()
     return posts
 
 
 @register.simple_tag(name="posts")
-def function(): 
-    posts = Post.objects.filter(status = True)
+def function():
+    posts = Post.objects.filter(status=True)
     return posts
 
-@register.simple_tag(name = 'comments_count')
+
+@register.simple_tag(name="comments_count")
 def function(pid):
-    return Comment.objects.filter(post=pid, approved = True).count()
+    return Comment.objects.filter(post=pid, approved=True).count()
 
 
 @register.filter
-def snippets(text, arg= 20):
-    return text[:arg]+ ". . . "
+def snippets(text, arg=20):
+    return text[:arg] + ". . . "
 
 
-@register.inclusion_tag('blog/blog-latest-posts.html')
-def latest_posts(arg= 2):
-    posts = Post.objects.filter(status=1).order_by('-published_date')[:arg]
-    #posts = Post.objects.filter(status=  1).order_by('published_date')[:1]
-    return {'posts':posts}
+@register.inclusion_tag("blog/blog-latest-posts.html")
+def latest_posts(arg=2):
+    posts = Post.objects.filter(status=1).order_by("-published_date")[:arg]
+    # posts = Post.objects.filter(status=  1).order_by('published_date')[:1]
+    return {"posts": posts}
 
-@register.inclusion_tag('blog/blog-post-categories.html')
+
+@register.inclusion_tag("blog/blog-post-categories.html")
 def postcategories():
-    posts = Post.objects.filter(status= True)
+    posts = Post.objects.filter(status=True)
     categories = Category.objects.all()
     cat_dict = {}
     for name in categories:
-        cat_dict[name] = Post.objects.filter(category = name).count()
-    return {'categories': cat_dict}
+        cat_dict[name] = Post.objects.filter(category=name).count()
+    return {"categories": cat_dict}
 
 
-@register.inclusion_tag('blog/blog-top-categories.html')
+@register.inclusion_tag("blog/blog-top-categories.html")
 def top_categories(arg=3):
     categories = Category.objects.all()
     posts = []
 
     for category in categories:
-        post = Post.objects.filter(
-            status=True,
-            category=category
-        ).order_by('-created_date').first()
+        post = (
+            Post.objects.filter(status=True, category=category)
+            .order_by("-created_date")
+            .first()
+        )
 
         if post and post not in posts:
             posts.append(post)
@@ -56,4 +61,4 @@ def top_categories(arg=3):
         if len(posts) >= arg:
             break
 
-    return {'posts': posts}
+    return {"posts": posts}
