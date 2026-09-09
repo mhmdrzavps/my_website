@@ -13,6 +13,7 @@ class PostAdmin(SummernoteModelAdmin):
     # exclude = ('title', )
     list_display = (
         "title",
+        "id",
         "author",
         "counted_view",
         "status",

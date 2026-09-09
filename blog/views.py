@@ -44,21 +44,25 @@ def blog_single(request, pid):
                 request, messages.SUCCESS, "your comment was submitted"
             )
         else:
+            print(form.errors)
             messages.add_message(request, messages.ERROR, "your comment did not submit")
 
     posts = Post.objects.filter(status=True)
     post = get_object_or_404(posts, pk=pid)
+    prev_post = Post.objects.filter(status = True, id__lt=post.id).order_by("-id").first()    
+    next_post = Post.objects.filter(status = True, id__gt=post.id).order_by("id").first()
+
 
     if request.user.is_authenticated:
         comments = Comment.objects.filter(post=post.id, approved=True)
         form = CommentForm()
-        contex = {"post": post, "comments": comments, "form": form}
+        contex = {"post": post, "comments": comments, "form": form, "prev_post": prev_post, "next_post": next_post}
         return render(request, "blog/blog-single.html", contex)
     else:
         if not post.login_require:
             comments = Comment.objects.filter(post=post.id, approved=True)
             form = CommentForm()
-            contex = {"post": post, "comments": comments, "form": form}
+            contex = {"post": post, "comments": comments, "form": form, "prev_post": prev_post, "next_post": next_post}
             return render(request, "blog/blog-single.html", contex)
         else:
             return HttpResponseRedirect(reverse("accounts:login"))

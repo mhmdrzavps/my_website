@@ -3388,16 +3388,19 @@ body.mobile-nav-active #mobile-nav-toggle {
 @media (max-width: 767px) {
   .post-content-area .single-post .meta-details {
     text-align: left;
+  
   }
 }
 
 .post-content-area .single-post .meta-details .tags {
   margin-bottom: 30px;
+  margin-right: -3px;
 }
 
 .post-content-area .single-post .meta-details .tags li {
   display: inline-block;
   font-size: 14px;
+   
 }
 
 .post-content-area .single-post .meta-details .tags li a {
@@ -3414,7 +3417,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 @media (max-width: 1024px) {
   .post-content-area .single-post .meta-details {
-    margin-top: 0px;
+    margin-top: 0px 
   }
 }
 
@@ -3908,6 +3911,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
+  max-width: 150px;
 }
 
 .single-post-area .navigation-area .nav-left .lnr {
@@ -3947,6 +3951,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
+  max-width: 150px;
 }
 
 .single-post-area .navigation-area .nav-right .lnr {
@@ -3964,6 +3969,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .single-post-area .navigation-area .nav-right:hover .thumb img {
   opacity: .5;
+  
 }
 
 @media (max-width: 991px) {
