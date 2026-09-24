@@ -18,8 +18,18 @@
 <body class="text-center">
   <form class="form-signin" action="{% url 'accounts:login' %}" method="post">
     {% csrf_token %}
-    <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <div class="text-center mb-4">
+      <h1 style="
+        font-weight: 800;
+        font-size: 2.4rem;
+        background: linear-gradient(45deg, #0d6efd, #6610f2);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: 1.5px;">
+        Travelista
+      </h1>
+    </div>
     <label for="inputEmail" class="sr-only">Username</label>
     <input name="username" type="text" id="inputEmail" class="form-control" placeholder="Username" required autofocus>
     <label for="inputPassword" class="sr-only">Password</label>
