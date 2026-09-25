@@ -6,10 +6,10 @@ SECRET_KEY = "django-insecure-6neb7ina37=@in2-f7ws32%4=+$s2dx16zov$xeoyhk=x0dpe0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['travelista.ir', 'www.travelista.ir']
+ALLOWED_HOSTS = []
 
 # site framework
-SITE_ID = 3
+SITE_ID = 2
 
 
 #INSTALLED_APPS = []

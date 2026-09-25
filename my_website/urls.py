@@ -13,12 +13,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("website.urls")),
     path("blog/", include("blog.urls")),
-    path(
-        "sitemap.xml",
-        sitemap,
-        {"sitemaps": sitemaps},
-        name="django.contrib.sitemaps.views.sitemap",
-    ),
+    path("sitemap.xml", sitemap,{"sitemaps": sitemaps},name="django.contrib.sitemaps.views.sitemap"),
     path("summernote/", include("django_summernote.urls")),
     path("robots.txt", include("robots.urls")),
     path("__debug__/", include("debug_toolbar.urls")),
@@ -28,3 +23,10 @@ urlpatterns = [
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+
+handler400 = 'my_website.error_views.error_400' 
+handler403 = 'my_website.error_views.error_403'
+handler404 = 'my_website.error_views.error_404'
+handler500 = 'my_website.error_views.error_500'

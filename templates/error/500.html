@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+  #header {
+    background: #222 !important;
+    position: relative !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    height: auto !important;
+    z-index: 9999 !important;
+  }
+  #header * {
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  #header .nav-menu a,
+  #header .header-top a,
+  #header .header-top-left a,
+  #header .header-social a {
+    color: #ffffff !important;
+  }
+  #header .main-menu {
+    display: block !important;
+  }
+  #logo img {
+    max-height: 40px;
+    display: inline-block !important;
+  }
+</style>
+
+<div style="padding: 100px 20px; text-align: center; min-height: 50vh;">
+    <h1 style="font-size: 90px; font-weight: 800; color: #0d6efd; margin: 0 0 10px 0;">500</h1>
+    <h2 style="font-size: 26px; margin: 0 0 15px 0;">Server Error</h2>
+    <p style="color: #666; font-size: 17px; margin-bottom: 30px;">
+        Sorry, something went wrong on our server. Please try again later.
+    </p>
+    <a href="/" style="display: inline-block; background: #0d6efd; color: #fff; padding: 12px 40px; border-radius: 8px; text-decoration: none; font-size: 16px;">
+        Back to Home
+    </a>
+</div>
+{% endblock %}

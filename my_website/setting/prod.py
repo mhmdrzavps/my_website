@@ -3,7 +3,7 @@ from my_website.settings import *
 SECRET_KEY = "django-insecure-6neb7ina37=@in2-f7ws32%4=+$s2dx16zov$xeoyhk=x0dpe0"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['travelista.ir', 'www.travelista.ir']
 
