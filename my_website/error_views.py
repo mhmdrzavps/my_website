@@ -12,12 +12,14 @@ def error_403(request, exception):
     response = render(request, 'error/403.html', context = context)
     response.status_code = 403
     return response
+
 #function for 404 error
 def error_404(request, exception):
     context = {'exception': exception}
     response = render(request, 'error/404.html', context = context)
     response.status_code = 404
     return response
+
 #function for 500 error
 def error_500(request):
     response = render(request, 'error/500.html')

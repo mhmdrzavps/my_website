@@ -1,4 +1,5 @@
 from website.models import Contact
+from blog.models import Post
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from website.form import NameForm, ContactForm, NewsletterForm
@@ -7,7 +8,9 @@ from django.contrib import messages
 
 # Create your views here.
 def home_view(request):
-    return render(request, "website/index.html")
+    posts = Post.objects.filter(status = True).order_by('published_date')[:3]
+    context = {'posts': posts}
+    return render(request, "website/index.html", context)
 
 
 def about_view(request):

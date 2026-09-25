@@ -25,7 +25,8 @@ class PostAdmin(SummernoteModelAdmin):
     # ordering = ['created_date']
     # ordering = ['-created_date']
     search_fields = ["title", "content"]
-    summernote_fields = ["content"]
+    summernote_fields = ['content']
+
 
 
 class CommectAdmin(admin.ModelAdmin):
