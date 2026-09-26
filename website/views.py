@@ -8,7 +8,7 @@ from django.contrib import messages
 
 # Create your views here.
 def home_view(request):
-    posts = Post.objects.filter(status = True).order_by('published_date')[:3]
+    posts = Post.objects.filter(status = True).order_by('published_date')[:4]
     context = {'posts': posts}
     return render(request, "website/index.html", context)
 

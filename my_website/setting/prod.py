@@ -17,7 +17,6 @@ SITE_ID = 3
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
 # Source - https://stackoverflow.com/a/39895356
 # Posted by Manoj Jadhav
 # Retrieved 2026-09-13, License - CC BY-SA 3.0
@@ -47,7 +46,7 @@ else:
 
 
 STATIC_ROOT = BASE_DIR / "static"
-MEDIA_ROOT = BASE_DIR / "MEDIA"
+MEDIA_ROOT = BASE_DIR / "media"
 
 STATICFILES_DIRS = [
     BASE_DIR / "statics",
